@@ -12,11 +12,13 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
-  script: python setup.py install --single-version-externally-managed --record record.txt
+  noarch: python
+  number: 1
+  script: python -m pip install --no-deps --ignore-installed .
 
 requirements:
-  build:
+  host:
+    - pip
     - python
     - setuptools
   run:
@@ -30,7 +32,7 @@ about:
   home: http://github.com/graingert/python-clamd
   license: LGPL
   license_family: LGPL
-  summary: 'Simple, fast, extensible JSON encoder/decoder for Python'
+  summary: 'Clamd is a python interface to Clamd (Clamav daemon)'
 
   description: |
     clamd is a portable Python module to use the ClamAV anti-virus engine
